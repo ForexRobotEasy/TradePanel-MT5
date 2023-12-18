@@ -1,0 +1,65 @@
+
+// TradePanel MT5 - Real-Time Trading Results
+
+// Developer: Forex Robot Easy Team
+// Website: forexroboteasy.com
+
+// Import necessary modules
+#include <TradePanel.mqh>
+
+// Initialize trade panel object
+TradePanel panel;
+
+// Define trading algorithm
+void OnTick()
+{
+    // Get real-time trading results
+    double accountBalance = panel.GetAccountBalance();
+    double accountEquity = panel.GetAccountEquity();
+    double accountProfit = panel.GetAccountProfit();
+
+    // Display real-time trading results
+    Print('Account Balance: ', accountBalance);
+    Print('Account Equity: ', accountEquity);
+    Print('Account Profit: ', accountProfit);
+}
+
+// Initialize TradePanel MT5
+int OnInit()
+{
+    // Set up advanced trading tools
+    panel.SetupCharts();
+    panel.SetupIndicators();
+    panel.SetupRiskManagement();
+
+    // Download options
+    panel.AddDownloadOption('Desktop');
+    panel.AddDownloadOption('Mobile');
+
+    // Integration with MetaTrader 5
+    panel.IntegrateWithMetaTrader5();
+
+    // Customization options
+    panel.EnableCustomization();
+
+    // Real-time market data
+    panel.GetRealTimeMarketData();
+
+    // Independent testing
+    panel.AllowIndependentTesting();
+
+    return(INIT_SUCCEEDED);
+}
+
+// Clean up resources
+void OnDeinit(const int reason)
+{
+    panel.Cleanup();
+}
+
+// Logical conclusion of the program
+void OnDeinit(const int reason)
+{
+    panel.Cleanup();
+    Print('TradePanel MT5 has been closed.');
+}
